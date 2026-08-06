@@ -46,3 +46,17 @@ one line.
   $7.99 AUD one-time, injuries programmed around, not medical advice).
 - Natural follow-up when you want it: a 5th card on the Shopify hub for
   Programs, matching the VIP/Journey/Trading/Store cards.
+
+## Client transformations (auto-discovered)
+Drop images into assets/transformations/ named 1.jpg, 2.jpg, 3.jpg ...
+(.png also works). One image per client — before & after combined
+side-by-side. The page finds them automatically and shows a horizontal
+swipe carousel; with zero images the section stays invisible. Only post
+real clients who've given written permission.
+
+## Watermarking (do this before uploading transformations)
+Open /watermark.html on the live site, drop the raw photos in, and download
+the branded copies — diagonal JWS marks across the middle (can't be cropped
+out) plus a corner tag with the URL, baked into the pixels in your browser.
+Upload the watermarked copies to assets/transformations/, not the originals.
+The page is unlisted (noindex, not in the sitemap).

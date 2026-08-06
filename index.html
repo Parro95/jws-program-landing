@@ -14,7 +14,7 @@
 <link rel="icon" href="https://cdn.jsdelivr.net/gh/Parro95/jws-assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -69,264 +69,453 @@
 }
 </script>
 <style>
-  /* ══ JWS ebook system, webpage edition ═══════════════════════════════
-     black #000 / #0A0A0A · gold #CE9551 · ivory #F7F4EC · espresso #2A241C
-     Conservative CSS on purpose: most visitors arrive inside Telegram's
-     in-app browser. No grid, no custom properties, flexbox only.       */
+  /* ══ Conversion palette (the top-page formula) ═══════════════════════
+     field #FFFFFF · tint #F4F7FB · ink #0F1B2D · muted #5B6B7F
+     ACTION #2563EB · borders #E4E9F1
+     Gold #B8862E/#CE9551 reserved for THE PRODUCT (program cards, wave).
+     Flex-only CSS: most visits arrive in Telegram's in-app browser.    */
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { background: #0A0A0A; color: #F7F4EC;
+  body { background: #FFFFFF; color: #0F1B2D;
     font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
     font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 
-  .mono { font-family: 'JetBrains Mono', 'Courier New', monospace; }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 22px; }
-
-  a { color: #CE9551; }
-  a:focus-visible, button:focus-visible, .cta:focus-visible {
-    outline: 3px solid #CE9551; outline-offset: 3px; }
-
-  /* ── Section frames: the PDF's gold rule + mono band ── */
-  .band { display: flex; justify-content: space-between; align-items: baseline;
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    letter-spacing: 0.32em; text-transform: uppercase; }
-  .frame-top { border-top: 2px solid #CE9551; padding-top: 12px;
-    margin-bottom: 44px; }
-  .frame-bottom { border-bottom: 2px solid #CE9551; padding-bottom: 12px;
-    margin-top: 44px; }
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 0 22px; }
+  a { color: #2563EB; }
+  a:focus-visible { outline: 3px solid #2563EB; outline-offset: 3px; }
 
   .kicker { font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    letter-spacing: 0.42em; text-transform: uppercase; color: #CE9551;
-    font-weight: 700; margin-bottom: 14px; }
+    letter-spacing: 0.34em; text-transform: uppercase; color: #2563EB;
+    font-weight: 700; margin-bottom: 12px; }
   h2 { font-family: 'Archivo Black', 'Arial Black', sans-serif;
-    font-size: 34px; line-height: 1.05; text-transform: uppercase;
-    letter-spacing: 0.01em; font-weight: 400; margin-bottom: 18px; }
+    font-size: 32px; line-height: 1.06; text-transform: uppercase;
+    font-weight: 400; margin-bottom: 16px; color: #0F1B2D; }
+  .blue { color: #2563EB; }
+  .lede { color: #5B6B7F; max-width: 660px; }
+  section { padding: 56px 0 60px; }
+  .tint { background: #F4F7FB; }
 
-  /* ── HERO: the cover formula ── */
-  .hero { background: #000; padding: 26px 0 0; }
-  .hero .band { color: #CE9551; }
-  .hero .band .r { text-align: right; color: #CE9551; line-height: 1.8; }
-  .crest { text-align: center; margin: 54px 0 40px; }
-  .crest img { width: 148px; height: 148px; object-fit: contain; }
+  .cta { display: inline-block; background: #2563EB; color: #FFFFFF;
+    font-weight: 700; font-size: 18px; padding: 17px 36px;
+    border-radius: 999px; text-decoration: none;
+    box-shadow: 0 12px 28px rgba(37,99,235,0.35); }
+  .cta:hover { background: #1D4ED8; }
+  .cta-note { margin-top: 12px; font-size: 14px; color: #5B6B7F; }
+  .cta-block { margin-top: 28px; }
+
+  /* ── HERO: Shannon front and centre ── */
+  .hero { padding: 20px 0 0; border-bottom: 1px solid #E4E9F1; }
+  .topbar { display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 0 20px; }
+  .topbar .brand { display: flex; align-items: center; }
+  .topbar img { width: 46px; height: 46px; margin-right: 12px; }
+  .topbar .name { font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    letter-spacing: 0.3em; font-weight: 700; color: #0F1B2D; }
+  .chip { font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.1em; background: #0F1B2D; color: #F2F6FF;
+    padding: 8px 14px; border-radius: 999px; white-space: nowrap; }
+  .chip b { color: #7FA8FF; }
+
+  .hero-flex { display: flex; align-items: flex-end; }
+  .hero-copy { flex: 1 1 56%; padding: 26px 36px 54px 0; }
   h1 { font-family: 'Archivo Black', 'Arial Black', sans-serif;
-    font-size: 62px; line-height: 0.98; text-transform: uppercase;
-    letter-spacing: -0.005em; font-weight: 400; }
-  h1 .l2 { color: #CE9551; display: block; }
-  .hero .subrule { border-top: 1.5px solid #CE9551; margin-top: 26px;
-    padding-top: 16px; }
-  .hero .subtitle { font-family: 'JetBrains Mono', monospace; font-size: 12px;
-    letter-spacing: 0.34em; text-transform: uppercase; color: #D8D3C6; }
-  .hero-cta { margin: 40px 0 8px; }
-  .cta { display: inline-block; background: #CE9551; color: #000;
-    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 18px;
-    padding: 17px 34px; border-radius: 999px; text-decoration: none; }
-  .cta:hover { background: #DCA968; }
-  .cta-note { margin-top: 14px; font-size: 14px; color: #8A857B; }
-  .hero .frame-bottom { margin-top: 56px; }
-  .hero .band.foot { color: #CE9551; }
+    font-size: 54px; line-height: 1.0; text-transform: uppercase;
+    font-weight: 400; color: #0F1B2D; }
+  h1 .l2 { color: #2563EB; display: block; }
+  .hero-sub { margin: 18px 0 6px; font-size: 18px; color: #5B6B7F;
+    max-width: 470px; }
+  .proof { margin-top: 18px; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.12em; color: #5B6B7F;
+    text-transform: uppercase; }
+  .proof b { color: #2563EB; }
+  .hero-me { flex: 1 1 44%; text-align: center; }
+  .hero-me img { width: 92%; max-width: 400px; height: auto; display: block;
+    margin: 0 auto; }
 
-  /* ── Cream sections (the PDF interior pages) ── */
-  .cream { background: #F7F4EC; color: #2A241C; padding: 60px 0 64px; }
-  .cream .band { color: #B07C3A; }
-  .cream .band .r { color: #8A8479; }
-  .cream h2 { color: #17120C; }
-  .cream .gold { color: #B07C3A; }
-  .lede { color: #57503F; max-width: 640px; }
+  /* ── Live program showcase (the product = gold) ── */
+  .showcase-card { background: #FFFDF7; border: 1px solid #EFE7D8;
+    border-radius: 14px; padding: 26px 26px 10px;
+    box-shadow: 0 22px 54px rgba(15,27,45,0.10); margin-top: 30px; }
+  .pgband { display: flex; justify-content: space-between; align-items: baseline;
+    border-top: 2px solid #B8862E; padding-top: 10px; margin-bottom: 18px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.28em; text-transform: uppercase; color: #B8862E; }
+  .pgband .r { color: #97907F; }
+  .pgday { font-family: 'Archivo Black', sans-serif; font-size: 24px;
+    text-transform: uppercase; color: #17120C; margin-bottom: 4px; }
+  .pgfocus { font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    letter-spacing: 0.3em; text-transform: uppercase; color: #B8862E;
+    margin-bottom: 16px; }
+  .pgwarm { background: #FBF6EF; border-left: 3px solid #CE9551;
+    padding: 10px 14px; font-size: 14.5px; color: #5C5342; margin-bottom: 8px; }
+  .exrow { display: flex; align-items: center; padding: 14px 0;
+    border-bottom: 1px solid #EFE7D8; }
+  .exrow:last-child { border-bottom: none; }
+  .exmain { flex: 1 1 46%; padding-right: 14px; }
+  .exname { font-weight: 700; font-size: 16.5px; color: #17120C; }
+  .excue { font-size: 13px; color: #97907F; margin-top: 2px; }
+  .exwave { flex: 0 0 auto; white-space: nowrap; }
+  .pchip { display: inline-block; width: 52px; text-align: center;
+    margin-left: 4px; }
+  .pchip-v { display: block; font-weight: 700; font-size: 13.5px;
+    color: #B8862E; }
+  .pchip-k { display: block; font-family: 'JetBrains Mono', monospace;
+    font-size: 8px; letter-spacing: 0.14em; color: #C0B8A6; margin-top: 1px; }
+  .exmeta { flex: 0 0 84px; text-align: right; font-family: 'JetBrains Mono',
+    monospace; font-size: 10.5px; color: #97907F; line-height: 1.7; }
+  .showcase-cap { text-align: center; margin-top: 18px; font-size: 14px;
+    color: #5B6B7F; }
 
-  /* ── Steps (a real sequence, so numbers mean something) ── */
-  .steps { margin-top: 34px; }
-  .step { display: flex; align-items: flex-start; padding: 22px 0;
-    border-bottom: 1px solid #E4DCCB; }
-  .step:last-child { border-bottom: none; }
-  .step-num { font-family: 'JetBrains Mono', monospace; font-weight: 700;
-    color: #B07C3A; font-size: 15px; letter-spacing: 0.1em; width: 56px;
-    flex-shrink: 0; padding-top: 3px; }
-  .step-body b { display: block; font-size: 19px; color: #17120C;
-    margin-bottom: 5px; }
-  .step-body p { color: #57503F; font-size: 16px; }
+  /* ── Training videos ── */
+  .vidrow { display: flex; margin-top: 28px; }
+  .vid { flex: 1 1 0; margin-right: 20px; }
+  .vid:last-child { margin-right: 0; }
+  .vid video { width: 100%; height: auto; display: block; border-radius: 14px;
+    border: 1px solid #E4E9F1; background: #0F1B2D;
+    box-shadow: 0 16px 38px rgba(15,27,45,0.14); }
+  .vid figcaption { margin-top: 10px; font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: #5B6B7F; text-align: center; }
 
-  /* ── The wave (black band, signature element) ── */
-  .waveband { background: #000; padding: 62px 0 66px; text-align: center; }
+  /* ── Steps ── */
+  .cards { display: flex; flex-wrap: wrap; margin-top: 26px; }
+  .card { flex: 1 1 260px; background: #FFFFFF; border: 1px solid #E4E9F1;
+    border-radius: 14px; padding: 24px 22px; margin: 0 14px 14px 0;
+    box-shadow: 0 8px 22px rgba(15,27,45,0.06); }
+  .card:last-child { margin-right: 0; }
+  .card .num { font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    color: #2563EB; font-size: 13px; letter-spacing: 0.14em; }
+  .card b { display: block; font-size: 19px; color: #0F1B2D; margin: 8px 0 6px; }
+  .card p { color: #5B6B7F; font-size: 15.5px; }
+
+  /* ── Wave: the product's black-gold moment ── */
+  .waveband { background: #0A0A0A; text-align: center; padding: 60px 0 64px; }
   .waveband h2 { color: #F7F4EC; }
   .waveband .gold { color: #CE9551; }
-  .chips { margin: 34px 0 26px; }
-  .chip { display: inline-block; width: 108px; margin: 6px 7px;
-    padding: 16px 0 13px; border: 1px solid #2A2A28; background: #101010; }
-  .chip-v { display: block; font-family: 'Archivo Black', sans-serif;
-    font-size: 24px; color: #CE9551; }
-  .chip-k { display: block; margin-top: 7px; font-family: 'JetBrains Mono',
+  .chips { margin: 30px 0 24px; }
+  .wchip { display: inline-block; width: 106px; margin: 6px 7px;
+    padding: 16px 0 13px; border: 1px solid #2A2A28; background: #101010;
+    border-radius: 10px; }
+  .wchip-v { display: block; font-family: 'Archivo Black', sans-serif;
+    font-size: 23px; color: #CE9551; }
+  .wchip-k { display: block; margin-top: 7px; font-family: 'JetBrains Mono',
     monospace; font-size: 10px; letter-spacing: 0.28em; color: #8A857B; }
   .waveband p { color: #B5B0A4; max-width: 620px; margin: 0 auto; }
+  .waveband .cta { margin-top: 30px; }
 
-  /* ── What's inside: shots + list ── */
-  .inside-flex { display: flex; flex-wrap: wrap; margin-top: 30px; }
+  /* ── What's inside ── */
+  .inside-flex { display: flex; flex-wrap: wrap; margin-top: 28px; }
   .shots { flex: 1 1 340px; min-width: 300px; padding-right: 30px; }
-  .shot { display: inline-block; width: 47%; margin-right: 3%;
-    vertical-align: top; }
+  .shotrow { display: flex; }
+  .shot { flex: 1 1 0; margin-right: 4%; }
+  .shot:last-child { margin-right: 0; }
   .shot img { width: 100%; height: auto; display: block;
-    border: 1px solid #E4DCCB; box-shadow: 0 14px 34px rgba(23,18,12,0.14); }
+    border: 1px solid #E4E9F1; border-radius: 6px;
+    box-shadow: 0 14px 34px rgba(15,27,45,0.12); }
   .shot figcaption { font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    letter-spacing: 0.24em; text-transform: uppercase; color: #8A8479;
+    letter-spacing: 0.24em; text-transform: uppercase; color: #5B6B7F;
     margin-top: 10px; }
   .inside-list { flex: 1 1 300px; min-width: 280px; }
   .inside-list li { list-style: none; padding: 11px 0 11px 30px;
-    border-bottom: 1px solid #E4DCCB; color: #57503F; position: relative;
+    border-bottom: 1px solid #E4E9F1; color: #5B6B7F; position: relative;
     font-size: 16px; }
   .inside-list li:before { content: "◆"; position: absolute; left: 4px;
-    color: #B07C3A; font-size: 11px; top: 15px; }
+    color: #2563EB; font-size: 11px; top: 15px; }
   .inside-list li:last-child { border-bottom: none; }
-  .inside-list b { color: #17120C; }
+  .inside-list b { color: #0F1B2D; }
+
+  /* ── About strip ── */
+  .about-flex { display: flex; align-items: center; background: #F4F7FB;
+    border: 1px solid #E4E9F1; border-radius: 16px; padding: 26px; }
+  .about-flex img { width: 108px; height: 108px; border-radius: 50%;
+    object-fit: cover; object-position: 50% 12%; margin-right: 24px;
+    flex: 0 0 auto; border: 3px solid #FFFFFF;
+    box-shadow: 0 8px 22px rgba(15,27,45,0.14); }
+  .about-flex b { font-size: 19px; color: #0F1B2D; display: block;
+    margin-bottom: 4px; }
+  .about-flex p { color: #5B6B7F; font-size: 15.5px; }
 
   /* ── Price ── */
-  .priceband { background: #000; padding: 64px 0 70px; text-align: center; }
-  .price { font-family: 'Archivo Black', sans-serif; font-size: 58px;
-    color: #F7F4EC; }
-  .price .cur { color: #CE9551; }
-  .price-sub { font-family: 'JetBrains Mono', monospace; font-size: 12px;
-    letter-spacing: 0.3em; text-transform: uppercase; color: #8A857B;
-    margin: 12px 0 34px; }
+  .pricecard { background: #FFFFFF; border: 2px solid #2563EB;
+    border-radius: 18px; text-align: center; padding: 44px 26px;
+    max-width: 560px; margin: 0 auto;
+    box-shadow: 0 18px 44px rgba(37,99,235,0.14); }
+  .price { font-family: 'Archivo Black', sans-serif; font-size: 54px;
+    color: #0F1B2D; }
+  .price .cur { color: #2563EB; }
+  .price-sub { font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.26em; text-transform: uppercase; color: #5B6B7F;
+    margin: 10px 0 26px; }
 
   /* ── FAQ ── */
-  details { border-bottom: 1px solid #E4DCCB; }
-  summary { cursor: pointer; padding: 18px 34px 18px 2px; font-weight: 600;
-    font-size: 17px; color: #17120C; list-style: none; position: relative; }
+  details { border-bottom: 1px solid #E4E9F1; }
+  summary { cursor: pointer; padding: 18px 34px 18px 2px; font-weight: 700;
+    font-size: 17px; color: #0F1B2D; list-style: none; position: relative; }
   summary::-webkit-details-marker { display: none; }
   summary:after { content: "+"; position: absolute; right: 6px; top: 14px;
-    color: #B07C3A; font-family: 'JetBrains Mono', monospace; font-size: 20px; }
+    color: #2563EB; font-family: 'JetBrains Mono', monospace; font-size: 20px; }
   details[open] summary:after { content: "–"; }
-  details p { padding: 0 2px 20px; color: #57503F; font-size: 16px; }
+  details p { padding: 0 2px 20px; color: #5B6B7F; font-size: 16px; }
 
-  /* ── Footer ── */
-  footer { background: #000; padding: 46px 0 34px; }
+  footer { background: #0F1B2D; padding: 46px 0 96px; }
   .foot-links { text-align: center; font-family: 'JetBrains Mono', monospace;
     font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; }
-  .foot-links a { color: #CE9551; text-decoration: none; margin: 0 14px;
+  .foot-links a { color: #7FA8FF; text-decoration: none; margin: 0 14px;
     display: inline-block; padding: 6px 0; }
-  .foot-links a:hover { text-decoration: underline; }
-  .disclaimer { text-align: center; color: #6E6A61; font-size: 13px;
+  .disclaimer { text-align: center; color: #7C8AA0; font-size: 13px;
     max-width: 640px; margin: 26px auto 0; }
   .foot-brand { text-align: center; font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: 0.42em; color: #8A857B; margin-top: 30px;
+    font-size: 11px; letter-spacing: 0.42em; color: #7C8AA0; margin-top: 30px;
     text-transform: uppercase; }
 
-  /* ── Reveal on scroll (reduced-motion safe) ── */
-  .rv { opacity: 0; -webkit-transform: translateY(18px);
-    transform: translateY(18px);
-    transition: opacity .6s ease, -webkit-transform .6s ease;
-    transition: opacity .6s ease, transform .6s ease; }
+  .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    background: rgba(15,27,45,0.96); padding: 10px 14px; text-align: center;
+    display: none; }
+  .sticky-cta a { display: block; background: #2563EB; color: #FFFFFF;
+    font-weight: 700; font-size: 16px; padding: 14px 10px;
+    border-radius: 999px; text-decoration: none; }
+  .sticky-on .sticky-cta { display: block; }
+
+
+  /* ── Transformations: horizontal scroll, auto-discovered ── */
+  .tscroll { display: flex; overflow-x: auto;
+    -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory;
+    padding: 26px 2px 18px; }
+  .tcard { flex: 0 0 auto; width: 300px; margin-right: 18px;
+    scroll-snap-align: start; background: #FFFFFF; border: 1px solid #E4E9F1;
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 12px 30px rgba(15,27,45,0.10); }
+  .tcard img { width: 100%; height: auto; display: block; }
+  .tcard .tcap { font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+    letter-spacing: 0.24em; text-transform: uppercase; color: #5B6B7F;
+    padding: 10px 12px; text-align: center; }
+  .thint { font-size: 13px; color: #5B6B7F; text-align: center;
+    margin-top: 4px; }
+  @media (hover: hover) {
+    .tcard { transition: transform .25s ease; }
+    .tcard:hover { transform: translateY(-4px); }
+  }
+
+  /* ── Gentle CTA pulse (attention beacon, motion-safe) ── */
+  @-webkit-keyframes ctapulse { 0%,100% { -webkit-transform: scale(1); }
+    50% { -webkit-transform: scale(1.035); } }
+  @keyframes ctapulse { 0%,100% { transform: scale(1); }
+    50% { transform: scale(1.035); } }
+  .pulse { -webkit-animation: ctapulse 2.6s ease-in-out infinite;
+    animation: ctapulse 2.6s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) {
+    .pulse { -webkit-animation: none; animation: none; }
+    .tcard { transition: none; }
+  }
+
+  .rv { opacity: 0; -webkit-transform: translateY(16px);
+    transform: translateY(16px);
+    transition: opacity .55s ease, -webkit-transform .55s ease;
+    transition: opacity .55s ease, transform .55s ease; }
   .rv.in { opacity: 1; -webkit-transform: none; transform: none; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .rv { opacity: 1; -webkit-transform: none; transform: none;
-      transition: none; }
+    .rv { opacity: 1; -webkit-transform: none; transform: none; transition: none; }
   }
 
-  @media (max-width: 560px) {
-    h1 { font-size: 42px; }
-    h2 { font-size: 27px; }
+  @media (max-width: 700px) {
+    h1 { font-size: 38px; }
+    h2 { font-size: 26px; }
     .price { font-size: 44px; }
-    .crest img { width: 116px; height: 116px; }
-    .chip { width: 88px; margin: 5px 4px; }
-    .chip-v { font-size: 19px; }
-    .shot { width: 100%; margin-right: 0; margin-bottom: 20px; }
+    .hero-flex { display: block; }
+    .hero-copy { padding: 10px 0 6px; }
+    .hero-me { margin-top: 10px; }
+    .hero-me img { width: 74%; }
+    .topbar .chip { display: none; }
+    .cards { display: block; }
+    .card { margin: 0 0 14px; }
+    .wchip { width: 86px; margin: 5px 4px; }
+    .wchip-v { font-size: 19px; }
+    .vidrow { display: block; }
+    .vid { margin: 0 0 18px; }
+    .shotrow { display: block; }
+    .shot { margin: 0 0 20px; }
     .shots { padding-right: 0; margin-bottom: 26px; }
+    .exrow { display: block; padding: 14px 0 12px; }
+    .exmain { padding-right: 0; }
+    .exwave { margin-top: 8px; white-space: normal; }
+    .pchip { margin: 0 8px 0 0; }
+    .exmeta { text-align: left; margin-top: 6px; }
+    .showcase-card { padding: 20px 16px 6px; }
+    .about-flex { display: block; text-align: center; }
+    .about-flex img { margin: 0 auto 16px; }
   }
 </style>
 </head>
 <body>
 
-<!-- ══ HERO — the cover formula ══ -->
+<!-- ══ HERO ══ -->
 <header class="hero">
   <div class="wrap">
-    <div class="frame-top" style="margin-bottom:0;">
-      <div class="band">
-        <span>JWS&nbsp;&nbsp;Fitness</span>
-        <span class="r">Custom&nbsp;Program<br>$7.99&nbsp;AUD</span>
+    <div class="topbar">
+      <div class="brand">
+        <img src="https://cdn.jsdelivr.net/gh/Parro95/jws-assets/logo.png" alt="JWS Fitness" width="46" height="46">
+        <span class="name">JWS&nbsp;FITNESS</span>
       </div>
+      <span class="chip"><b>$7.99 AUD</b>&nbsp;· one-time · free preview</span>
     </div>
 
-    <div class="crest rv">
-      <img src="https://cdn.jsdelivr.net/gh/Parro95/jws-assets/logo.png"
-           alt="JWS Fitness" width="148" height="148">
-    </div>
-
-    <h1 class="rv">Your program.<span class="l2">Written for you.</span></h1>
-
-    <div class="subrule rv">
-      <div class="subtitle">15 questions&nbsp;&nbsp;·&nbsp;&nbsp;Shannon's methodology&nbsp;&nbsp;·&nbsp;&nbsp;delivered in Telegram</div>
-    </div>
-
-    <div class="hero-cta rv">
-      <a class="cta" data-bot href="#">Build my program&nbsp;→</a>
-      <div class="cta-note">Free preview of your program first — unlock the full PDF for $7.99 AUD.</div>
-    </div>
-
-    <div class="frame-bottom">
-      <div class="band foot">
-        <span>Train&nbsp;·&nbsp;Fuel&nbsp;·&nbsp;Perform</span>
-        <span class="r">For&nbsp;you</span>
+    <div class="hero-flex">
+      <div class="hero-copy">
+        <h1 class="rv">Your program.<span class="l2">Written for you.</span></h1>
+        <p class="hero-sub rv">Answer 15 quick questions in Telegram and get a
+        4–8 week training program built around <em>your</em> goal, days,
+        equipment and injuries — on Shannon's methodology.</p>
+        <div class="cta-block rv">
+          <a class="cta pulse" data-bot href="#">Build my program — free preview&nbsp;→</a>
+          <div class="cta-note">Takes ~2 minutes · see your program before paying a cent</div>
+        </div>
+        <div class="proof rv">Built on the <b>JWS Performance System</b> · <b>1,800+</b> strong community</div>
+      </div>
+      <div class="hero-me rv">
+        <img src="assets/shannon.jpg" alt="Shannon — JWS Fitness">
       </div>
     </div>
   </div>
 </header>
 
-<!-- ══ HOW IT WORKS ══ -->
-<section class="cream">
+<!-- ══ LIVE PROGRAM SHOWCASE ══ -->
+<section class="tint">
   <div class="wrap">
-    <div class="frame-top">
-      <div class="band"><span>JWS Fitness&nbsp;·&nbsp;Custom Program</span><span class="r">How it works</span></div>
-    </div>
-    <div class="kicker">Two minutes of questions</div>
-    <h2>How it <span class="gold">works</span></h2>
-    <p class="lede">No forms, no email chains, no waiting days for a coach to reply. The whole thing happens inside Telegram.</p>
+    <div class="kicker">Straight out of a real program</div>
+    <h2>This is what lands in your <span class="blue">chat</span></h2>
+    <p class="lede">Every program is written fresh for one person. Here's a single day from one — wave and all.</p>
 
-    <div class="steps">
-      <div class="step rv">
-        <div class="step-num">01</div>
-        <div class="step-body"><b>Answer 15 quick questions</b>
-          <p>Your goal, training days, session length, the equipment you actually have, areas you want to focus on — and any injuries to program around.</p></div>
+    <div class="showcase-card rv">
+      <div class="pgband"><span>JWS Fitness&nbsp;·&nbsp;Custom Program</span><span class="r">Session 01 / 04</span></div>
+      <div class="pgday">Day 1 — Upper Power</div>
+      <div class="pgfocus">Heavy pressing and pulling to drive strength up</div>
+      <div class="pgwarm"><b>Warm-up:</b> 7 minutes on the assault bike, then two light ramp-up sets of your first lift.</div>
+
+      <div class="exrow">
+        <div class="exmain"><div class="exname">01&nbsp; Barbell Bench Press</div>
+          <div class="excue">Feet planted, slight arch, bar to lower chest.</div></div>
+        <div class="exwave"><span class="pchip"><span class="pchip-v">4×15</span><span class="pchip-k">WK 1</span></span><span class="pchip"><span class="pchip-v">4×12</span><span class="pchip-k">WK 2</span></span><span class="pchip"><span class="pchip-v">4×8</span><span class="pchip-k">WK 3</span></span><span class="pchip"><span class="pchip-v">5×5</span><span class="pchip-k">WK 4</span></span></div>
+        <div class="exmeta">150s rest<br>3-1-1</div>
       </div>
-      <div class="step rv">
-        <div class="step-num">02</div>
-        <div class="step-body"><b>Your program is written — for you, only</b>
-          <p>Shannon's training methodology applied to your exact answers. About a minute later your program preview appears in the chat: your split, your week, a sample day.</p></div>
+      <div class="exrow">
+        <div class="exmain"><div class="exname">02&nbsp; Barbell Bent-Over Row</div>
+          <div class="excue">Pull to the hips, squeeze the lats.</div></div>
+        <div class="exwave"><span class="pchip"><span class="pchip-v">4×15</span><span class="pchip-k">WK 1</span></span><span class="pchip"><span class="pchip-v">4×12</span><span class="pchip-k">WK 2</span></span><span class="pchip"><span class="pchip-v">4×8</span><span class="pchip-k">WK 3</span></span><span class="pchip"><span class="pchip-v">4×12</span><span class="pchip-k">WK 4</span></span></div>
+        <div class="exmeta">150s rest<br>controlled</div>
       </div>
-      <div class="step rv">
-        <div class="step-num">03</div>
-        <div class="step-body"><b>Preview free. Unlock when you're sure.</b>
-          <p>See your program before paying a cent. One tap unlocks the complete branded PDF — every session, every set, yours to keep forever.</p></div>
+      <div class="exrow">
+        <div class="exmain"><div class="exname">03&nbsp; Overhead Dumbbell Press</div></div>
+        <div class="exwave"><span class="pchip"><span class="pchip-v">3×15</span><span class="pchip-k">WK 1</span></span><span class="pchip"><span class="pchip-v">3×12</span><span class="pchip-k">WK 2</span></span><span class="pchip"><span class="pchip-v">3×8</span><span class="pchip-k">WK 3</span></span><span class="pchip"><span class="pchip-v">3×12</span><span class="pchip-k">WK 4</span></span></div>
+        <div class="exmeta">120s rest</div>
       </div>
+      <div class="exrow">
+        <div class="exmain"><div class="exname">04&nbsp; Weighted Pull-Up</div>
+          <div class="excue">Bodyweight only if needed — full hang each rep.</div></div>
+        <div class="exwave"><span class="pchip"><span class="pchip-v">3×12</span><span class="pchip-k">WK 1</span></span><span class="pchip"><span class="pchip-v">3×10</span><span class="pchip-k">WK 2</span></span><span class="pchip"><span class="pchip-v">3×6</span><span class="pchip-k">WK 3</span></span><span class="pchip"><span class="pchip-v">3×10</span><span class="pchip-k">WK 4</span></span></div>
+        <div class="exmeta">120s rest</div>
+      </div>
+      <div class="exrow">
+        <div class="exmain"><div class="exname">05&nbsp; Cable Face Pull</div>
+          <div class="excue">Elbows high, pull to the bridge of your nose.</div></div>
+        <div class="exwave"><span class="pchip"><span class="pchip-v">3×15</span><span class="pchip-k">WK 1</span></span><span class="pchip"><span class="pchip-v">3×12</span><span class="pchip-k">WK 2</span></span><span class="pchip"><span class="pchip-v">3×10</span><span class="pchip-k">WK 3</span></span><span class="pchip"><span class="pchip-v">3×15</span><span class="pchip-k">WK 4</span></span></div>
+        <div class="exmeta">60s rest</div>
+      </div>
+    </div>
+
+    <p class="showcase-cap">Yours won't look like this one — it'll look like <em>you</em>. Different days, different lifts, your wave.</p>
+    <div class="cta-block rv" style="text-align:center;">
+      <a class="cta" data-bot href="#">Build mine like this&nbsp;→</a>
     </div>
   </div>
 </section>
 
-<!-- ══ THE WAVE — signature ══ -->
+<!-- ══ TRAINING FOOTAGE ══ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">No stock footage here</div>
+    <h2>The system, <span class="blue">in session</span></h2>
+    <p class="lede">The same training that built the JWS Performance System — and every custom program that comes out of it.</p>
+    <div class="vidrow">
+      <figure class="vid rv">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/train-1-poster.jpg">
+          <source src="assets/train-1.mp4" type="video/mp4">
+        </video>
+        <figcaption>Train</figcaption>
+      </figure>
+      <figure class="vid rv">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/train-2-poster.jpg">
+          <source src="assets/train-2.mp4" type="video/mp4">
+        </video>
+        <figcaption>Perform</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ TRANSFORMATIONS (auto-discovers assets/transformations/N.jpg|png) ══ -->
+<section class="tint" id="tSection" style="display:none;">
+  <div class="wrap">
+    <div class="kicker">Real people, real changes</div>
+    <h2>Transformations on the <span class="blue">system</span></h2>
+    <div class="tscroll" id="tRow"></div>
+    <p class="thint">Swipe →&nbsp; Every photo shared with permission.</p>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="tint">
+  <div class="wrap">
+    <div class="kicker">Two minutes of questions</div>
+    <h2>How it <span class="blue">works</span></h2>
+    <div class="cards">
+      <div class="card rv"><span class="num">STEP 01</span>
+        <b>Answer 15 quick questions</b>
+        <p>Your goal, training days, session length, the equipment you actually
+        have — and any injuries to program around.</p></div>
+      <div class="card rv"><span class="num">STEP 02</span>
+        <b>Your program is written — for you</b>
+        <p>Shannon's methodology applied to your exact answers. About a minute
+        later, your preview appears in the chat.</p></div>
+      <div class="card rv"><span class="num">STEP 03</span>
+        <b>Preview free. Unlock when sure.</b>
+        <p>See your split and a sample day before paying a cent. One tap
+        unlocks the full branded PDF — yours forever.</p></div>
+    </div>
+    <div class="cta-block rv">
+      <a class="cta" data-bot href="#">Start the questions&nbsp;→</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ THE WAVE ══ -->
 <section class="waveband">
   <div class="wrap">
-    <div class="kicker">The engine inside every program</div>
+    <div class="kicker" style="color:#CE9551;">The engine inside every program</div>
     <h2>The JWS <span class="gold">rep wave</span></h2>
     <div class="chips rv">
-      <span class="chip"><span class="chip-v">4×15</span><span class="chip-k">WK&nbsp;1</span></span>
-      <span class="chip"><span class="chip-v">4×12</span><span class="chip-k">WK&nbsp;2</span></span>
-      <span class="chip"><span class="chip-v">4×8</span><span class="chip-k">WK&nbsp;3</span></span>
-      <span class="chip"><span class="chip-v">5×5</span><span class="chip-k">WK&nbsp;4</span></span>
+      <span class="wchip"><span class="wchip-v">4×15</span><span class="wchip-k">WK&nbsp;1</span></span>
+      <span class="wchip"><span class="wchip-v">4×12</span><span class="wchip-k">WK&nbsp;2</span></span>
+      <span class="wchip"><span class="wchip-v">4×8</span><span class="wchip-k">WK&nbsp;3</span></span>
+      <span class="wchip"><span class="wchip-v">5×5</span><span class="wchip-k">WK&nbsp;4</span></span>
     </div>
-    <p>Reps come down as the load goes up, and week four puts the strength on the bar. Every exercise in your program carries its own four-week wave — the same system as the JWS Performance System ebooks, built into a plan that's yours alone.</p>
+    <p>Reps come down as the load goes up, and week four puts the strength on
+    the bar. Every exercise carries its own four-week wave — the same system as
+    the JWS Performance System ebooks, built into a plan that's yours alone.</p>
+    <a class="cta rv" data-bot href="#">Get my wave&nbsp;→</a>
   </div>
 </section>
 
 <!-- ══ WHAT'S INSIDE ══ -->
-<section class="cream">
+<section>
   <div class="wrap">
-    <div class="frame-top">
-      <div class="band"><span>JWS Fitness&nbsp;·&nbsp;Custom Program</span><span class="r">What's inside</span></div>
-    </div>
     <div class="kicker">The PDF you keep</div>
-    <h2>What's <span class="gold">inside</span></h2>
-
+    <h2>What's <span class="blue">inside</span></h2>
     <div class="inside-flex">
       <div class="shots rv">
+        <div class="shotrow">
         <figure class="shot">
           <img src="assets/page-day.jpg" alt="A training day page from a JWS custom program, showing the exercise table with four-week rep wave chips" loading="lazy">
           <figcaption>A training day</figcaption>
@@ -335,6 +524,7 @@
           <img src="assets/page-closing.jpg" alt="The closing page of a JWS custom program" loading="lazy">
           <figcaption>The sign-off</figcaption>
         </figure>
+        </div>
       </div>
       <ul class="inside-list rv">
         <li><b>Personalised cover</b> — your name and program ID on it.</li>
@@ -349,25 +539,40 @@
   </div>
 </section>
 
-<!-- ══ PRICE ══ -->
-<section class="priceband">
+<!-- ══ ABOUT ══ -->
+<section class="tint" style="padding-top:0;">
   <div class="wrap">
-    <div class="kicker">One price. No subscription.</div>
-    <div class="price rv"><span class="cur">$</span>7.99&nbsp;<span style="font-size:26px;">AUD</span></div>
-    <div class="price-sub">One-time&nbsp;·&nbsp;Preview first&nbsp;·&nbsp;Secure checkout by Stripe</div>
-    <a class="cta rv" data-bot href="#">Build my program&nbsp;→</a>
+    <div class="about-flex rv">
+      <img src="assets/shannon.jpg" alt="Shannon">
+      <div>
+        <b>G'day — I'm Shannon.</b>
+        <p>Not a guru, not a suit — just someone who fell in love with training
+        and built a system around it. Every custom program runs on the exact
+        methodology I train with myself. Build yours, and if you ever need a
+        hand, I'm one message away in the chat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICE ══ -->
+<section>
+  <div class="wrap">
+    <div class="pricecard rv">
+      <div class="kicker">One price. No subscription.</div>
+      <div class="price"><span class="cur">$</span>7.99&nbsp;<span style="font-size:24px;">AUD</span></div>
+      <div class="price-sub">One-time&nbsp;·&nbsp;Preview first&nbsp;·&nbsp;Secure checkout by Stripe</div>
+      <a class="cta" data-bot href="#">Build my program&nbsp;→</a>
+      <div class="cta-note">Less than a coffee and a snack — yours forever.</div>
+    </div>
   </div>
 </section>
 
 <!-- ══ FAQ ══ -->
-<section class="cream">
+<section class="tint">
   <div class="wrap">
-    <div class="frame-top">
-      <div class="band"><span>JWS Fitness&nbsp;·&nbsp;Custom Program</span><span class="r">Questions</span></div>
-    </div>
     <div class="kicker">Good to know</div>
-    <h2>Questions, <span class="gold">answered</span></h2>
-
+    <h2>Questions, <span class="blue">answered</span></h2>
     <details class="rv"><summary>Is it actually personalised?</summary>
       <p>Yes — your program is built only from your answers. Your training days, your session length, your equipment, your focus areas. If you've only got dumbbells, you'll never see a barbell in it.</p></details>
     <details class="rv"><summary>What about injuries?</summary>
@@ -378,17 +583,17 @@
       <p>Message the bot — Shannon sees it and sorts it. You'll never pay for a program you didn't receive.</p></details>
     <details class="rv"><summary>Who writes the programs?</summary>
       <p>Shannon's training methodology — the same system behind the JWS Performance System ebooks — applied to your exact answers. It's how Shannon would train you, shared athlete-to-athlete, not a certified coaching service.</p></details>
+    <div class="cta-block rv">
+      <a class="cta" data-bot href="#">I'm in — build mine&nbsp;→</a>
+    </div>
   </div>
 </section>
 
 <!-- ══ CRAWLABLE DEPTH ══ -->
-<section class="cream">
+<section>
   <div class="wrap">
-    <div class="frame-top">
-      <div class="band"><span>JWS Fitness&nbsp;·&nbsp;Custom Program</span><span class="r">Any setup</span></div>
-    </div>
     <div class="kicker">Built for how you actually train</div>
-    <h2>A personalised program for <span class="gold">any setup</span></h2>
+    <h2>A personalised program for <span class="blue">any setup</span></h2>
     <p class="lede">Every JWS custom workout program is a 4–8 week personalised plan built from your answers — not a template with your name on it. Training 3 days or 6, the split fits your week: full body, upper/lower, or push/pull/legs. Full gym membership, a pair of dumbbells at home, or bodyweight only — every exercise is chosen from the equipment you actually have. Building muscle, losing fat, or chasing strength, the program carries the JWS 4-week rep wave on every lift, week-by-week progression, warm-ups, recovery guidance and a printable tracker. Injuries and limitations get programmed around, not ignored. Made in Australia, works anywhere — delivered straight to your Telegram as a branded PDF you keep forever.</p>
   </div>
 </section>
@@ -406,16 +611,17 @@
   </div>
 </footer>
 
-<script>
-  // ── One line to rule the funnel: set your bot's exact @username here ──
-  var BOT_USERNAME = "JWS_Fitness_Bot";
+<div class="sticky-cta"><div class="wrap">
+  <a class="pulse" data-bot href="#">Build my program — $7.99 AUD&nbsp;→</a>
+</div></div>
 
+<script>
+  var BOT_USERNAME = "JWS_Fitness_Bot";
   (function () {
     var url = "https://t.me/" + BOT_USERNAME + "?start=custom_program";
     var links = document.querySelectorAll("[data-bot]");
     for (var i = 0; i < links.length; i++) links[i].setAttribute("href", url);
 
-    // Scroll reveals — feature-detected, reduced-motion respected via CSS
     var els = document.querySelectorAll(".rv");
     if ("IntersectionObserver" in window) {
       var io = new IntersectionObserver(function (entries) {
@@ -429,6 +635,71 @@
       for (var k = 0; k < els.length; k++) io.observe(els[k]);
     } else {
       for (var m = 0; m < els.length; m++) els[m].className += " in";
+    }
+
+
+    // Transformations: probe assets/transformations/1..24 (.jpg then .png),
+    // append what exists, reveal the section only if anything loaded.
+    (function () {
+      var row = document.getElementById("tRow");
+      var sec = document.getElementById("tSection");
+      if (!row || !sec) return;
+      var found = 0;
+      function tryLoad(n, ext) {
+        var img = new Image();
+        img.onload = function () {
+          var card = document.createElement("div");
+          card.className = "tcard";
+          img.alt = "Client transformation " + n + " — before and after";
+          card.appendChild(img);
+          var cap = document.createElement("div");
+          cap.className = "tcap";
+          cap.innerHTML = "TRANSFORMATION&nbsp;" + (n < 10 ? "0" + n : n);
+          card.appendChild(cap);
+          row.appendChild(card);
+          found++;
+          sec.style.display = "block";
+        };
+        img.onerror = function () {
+          if (ext === "jpg") tryLoad(n, "png");
+        };
+        img.src = "assets/transformations/" + n + "." + ext;
+      }
+      for (var n = 1; n <= 24; n++) tryLoad(n, "jpg");
+
+      // Gentle auto-drift, paused on any user touch/hover; motion-safe.
+      var reduce = window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!reduce && window.requestAnimationFrame) {
+        var pause = false, dir = 1;
+        row.addEventListener && row.addEventListener("touchstart",
+          function(){ pause = true; });
+        row.addEventListener && row.addEventListener("mouseenter",
+          function(){ pause = true; });
+        row.addEventListener && row.addEventListener("mouseleave",
+          function(){ pause = false; });
+        (function drift() {
+          if (!pause && found > 1) {
+            var max = row.scrollWidth - row.clientWidth;
+            if (max > 0) {
+              row.scrollLeft += 0.4 * dir;
+              if (row.scrollLeft >= max - 1) dir = -1;
+              if (row.scrollLeft <= 1) dir = 1;
+            }
+          }
+          window.requestAnimationFrame(drift);
+        })();
+      }
+    })();
+
+    function onScroll() {
+      var mobile = window.innerWidth <= 700;
+      var past = (window.pageYOffset || document.documentElement.scrollTop) > 560;
+      document.body.className = (mobile && past) ? "sticky-on" : "";
+    }
+    if (window.addEventListener) {
+      window.addEventListener("scroll", onScroll);
+      window.addEventListener("resize", onScroll);
     }
   })();
 </script>

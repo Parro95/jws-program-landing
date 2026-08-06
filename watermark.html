@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>JWS Watermark Tool</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#F4F7FB; color:#0F1B2D; font-family:-apple-system,'Segoe UI',
+    Inter,sans-serif; font-size:16px; line-height:1.6; padding:26px 18px 60px; }
+  .wrap { max-width:640px; margin:0 auto; }
+  h1 { font-size:22px; margin:14px 0 6px; }
+  .sub { color:#5B6B7F; font-size:14.5px; margin-bottom:20px; }
+  .drop { background:#FFFFFF; border:2px dashed #2563EB; border-radius:14px;
+    padding:38px 20px; text-align:center; color:#2563EB; font-weight:700;
+    cursor:pointer; }
+  .drop.on { background:#EAF1FF; }
+  input[type=file] { display:none; }
+  .hint { font-size:13px; color:#5B6B7F; margin-top:10px; text-align:center; }
+  .out { margin-top:24px; }
+  .item { background:#FFFFFF; border:1px solid #E4E9F1; border-radius:12px;
+    padding:14px; margin-bottom:14px; }
+  .item img { width:100%; height:auto; display:block; border-radius:8px; }
+  .item a { display:inline-block; margin-top:10px; background:#2563EB;
+    color:#fff; font-weight:700; text-decoration:none; padding:10px 18px;
+    border-radius:999px; font-size:14.5px; }
+  .item .nm { font-size:12.5px; color:#5B6B7F; margin-top:8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>JWS watermark tool</h1>
+  <p class="sub">Drop transformation photos here. Each comes back with the JWS
+  mark baked into the pixels — that's the copy you upload to
+  <b>assets/transformations/</b> (renamed to the next number).</p>
+
+  <label class="drop" id="drop">Tap to choose photos — or drag them here
+    <input type="file" id="file" accept="image/*" multiple>
+  </label>
+  <p class="hint">Nothing uploads anywhere — watermarking happens right in your
+  browser. On iPhone: if the download button just opens the image, long-press
+  it and Save to Photos.</p>
+
+  <div class="out" id="out"></div>
+</div>
+
+<script>
+(function () {
+  var drop = document.getElementById("drop");
+  var input = document.getElementById("file");
+  var out = document.getElementById("out");
+
+  // Preload the goat (CORS-safe CDN); tool works fine without it.
+  var goat = new Image(), goatReady = false;
+  goat.crossOrigin = "anonymous";
+  goat.onload = function () { goatReady = true; };
+  goat.src = "https://cdn.jsdelivr.net/gh/Parro95/jws-assets/logo.png";
+
+  function process(file) {
+    var url = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function () {
+      URL.revokeObjectURL(url);
+      var maxDim = 2400;
+      var scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+      var w = Math.round(img.width * scale), h = Math.round(img.height * scale);
+      var c = document.createElement("canvas");
+      c.width = w; c.height = h;
+      var x = c.getContext("2d");
+      x.drawImage(img, 0, 0, w, h);
+
+      // ── Diagonal repeating brand marks (uncroppable middle coverage) ──
+      var fs = Math.max(22, Math.round(w / 12));
+      x.save();
+      x.translate(w / 2, h / 2);
+      x.rotate(-Math.PI / 7);
+      x.font = "700 " + fs + "px 'Arial Black', Arial, sans-serif";
+      x.textAlign = "center";
+      var stepX = fs * 7.6, stepY = fs * 3.4;
+      for (var yy = -h; yy <= h; yy += stepY) {
+        for (var xx = -w; xx <= w; xx += stepX) {
+          x.fillStyle = "rgba(0,0,0,0.10)";
+          x.fillText("JWS FITNESS", xx + 2, yy + 2);
+          x.fillStyle = "rgba(255,255,255,0.16)";
+          x.fillText("JWS FITNESS", xx, yy);
+        }
+      }
+      x.restore();
+
+      // ── Solid corner tag: the URL rides every share ──
+      var tagFs = Math.max(13, Math.round(w / 46));
+      x.font = "700 " + tagFs + "px 'Courier New', monospace";
+      var label = "JWS FITNESS · journeywithshannon.com";
+      var tw = x.measureText(label).width;
+      var pad = Math.round(tagFs * 0.8);
+      var icon = goatReady ? tagFs + pad : 0;
+      var bw = tw + pad * 2 + icon, bh = tagFs + pad * 1.6;
+      var bx = w - bw - pad, by = h - bh - pad;
+      x.fillStyle = "rgba(10,10,10,0.74)";
+      x.fillRect(bx, by, bw, bh);
+      if (goatReady) {
+        x.drawImage(goat, bx + pad * 0.6, by + bh * 0.14, tagFs * 1.1, tagFs * 1.1);
+      }
+      x.fillStyle = "#E9B36B";
+      x.textAlign = "left";
+      x.fillText(label, bx + pad + icon * 0.9, by + bh - pad * 0.75);
+
+      c.toBlob(function (blob) {
+        var item = document.createElement("div");
+        item.className = "item";
+        var prev = document.createElement("img");
+        var burl = URL.createObjectURL(blob);
+        prev.src = burl;
+        item.appendChild(prev);
+        var a = document.createElement("a");
+        a.href = burl;
+        var base = (file.name || "photo").replace(/\.[^.]+$/, "");
+        a.download = "jws-" + base + "-watermarked.jpg";
+        a.textContent = "Download watermarked copy";
+        item.appendChild(a);
+        var nm = document.createElement("div");
+        nm.className = "nm";
+        nm.textContent = "Rename to the next number (e.g. 3.jpg) before uploading.";
+        item.appendChild(nm);
+        out.insertBefore(item, out.firstChild);
+      }, "image/jpeg", 0.9);
+    };
+    img.src = url;
+  }
+
+  input.addEventListener("change", function () {
+    for (var i = 0; i < input.files.length; i++) process(input.files[i]);
+  });
+  drop.addEventListener("dragover", function (e) {
+    e.preventDefault(); drop.className = "drop on"; });
+  drop.addEventListener("dragleave", function () { drop.className = "drop"; });
+  drop.addEventListener("drop", function (e) {
+    e.preventDefault(); drop.className = "drop";
+    var fs = e.dataTransfer && e.dataTransfer.files;
+    if (fs) for (var i = 0; i < fs.length; i++) process(fs[i]);
+  });
+})();
+</script>
+</body>
+</html>
