@@ -242,6 +242,20 @@
     margin-bottom: 4px; }
   .about-flex p { color: #5B6B7F; font-size: 15.5px; }
 
+  /* ── What members say ── */
+  .qrow { display: flex; margin-top: 26px; }
+  .qcard { flex: 1 1 0; background: #FFFFFF; border: 1px solid #E4E9F1;
+    border-radius: 14px; padding: 24px 22px 20px; margin-right: 16px;
+    box-shadow: 0 8px 22px rgba(15,27,45,0.06); position: relative; }
+  .qcard:last-child { margin-right: 0; }
+  .qmark { font-family: 'Archivo Black', sans-serif; font-size: 34px;
+    color: #2563EB; line-height: 1; display: block; margin-bottom: 8px; }
+  .qcard p { color: #44526A; font-size: 15.5px; }
+  .qwho { margin-top: 14px; font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: #5B6B7F; }
+  .qwho b { color: #2563EB; }
+
   /* ── Price ── */
   .pricecard { background: #FFFFFF; border: 2px solid #2563EB;
     border-radius: 18px; text-align: center; padding: 44px 26px;
@@ -347,6 +361,8 @@
     .topbar .chip { display: none; }
     .cards { display: block; }
     .card { margin: 0 0 14px; }
+    .qrow { display: block; }
+    .qcard { margin: 0 0 14px; }
     .wchip { width: 86px; margin: 5px 4px; }
     .wchip-v { font-size: 19px; }
     .vidrow { display: block; }
@@ -565,6 +581,30 @@
         and built a system around it. Every custom program runs on the exact
         methodology I train with myself. Build yours, and if you ever need a
         hand, I'm one message away in the chat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHAT MEMBERS SAY (real messages, shared with permission) ══
+     To add more: copy a qcard block, swap the text + first name.
+     Real quotes from real members only. ══ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Real messages, from the chat</div>
+    <h2>What members <span class="blue">say</span></h2>
+    <div class="qrow">
+      <div class="qcard rv"><span class="qmark">&ldquo;</span>
+        <p>Paid for my plan and it looks awesome.</p>
+        <div class="qwho"><b>Nathan</b> &middot; paid member</div>
+      </div>
+      <div class="qcard rv"><span class="qmark">&ldquo;</span>
+        <p>Even counted in different exercises for my &lsquo;dodgy ankle&rsquo;.</p>
+        <div class="qwho"><b>Nathan</b> &middot; paid member</div>
+      </div>
+      <div class="qcard rv"><span class="qmark">&ldquo;</span>
+        <p>The week to week breakdown on scaling up or down depending on which week it is &mdash; very informative but not overly &lsquo;wordy&rsquo;.</p>
+        <div class="qwho"><b>Nathan</b> &middot; paid member</div>
       </div>
     </div>
   </div>
