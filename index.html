@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Custom Fitness Program — Written For You | JWS Fitness</title>
+<meta name="description" content="Answer 15 questions in Telegram and get a personalised training program built on Shannon's methodology — your days, your equipment, your injuries programmed around. Free preview, then $7.99 AUD for the full branded PDF.">
+<link rel="canonical" href="https://programs.journeywithshannon.com/">
+<meta property="og:title" content="Your program. Written for you. | JWS Fitness">
+<meta property="og:description" content="15 questions → a personalised training program with the JWS 4-week rep wave, delivered in Telegram. Free preview, $7.99 AUD to unlock.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://programs.journeywithshannon.com/">
+<meta property="og:image" content="https://programs.journeywithshannon.com/assets/page-day.jpg">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/Parro95/jws-assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "JWS Custom Fitness Program",
+  "description": "A personalised training program built from your answers — split, sets, reps, the JWS 4-week rep wave, progression, recovery and a printable tracker, delivered as a branded PDF in Telegram.",
+  "brand": {"@type": "Brand", "name": "JWS Fitness"},
+  "image": "https://programs.journeywithshannon.com/assets/page-day.jpg",
+  "offers": {
+    "@type": "Offer",
+    "price": "7.99",
+    "priceCurrency": "AUD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://programs.journeywithshannon.com/"
+  }
+}
+</script>
+<style>
+  /* ══ JWS ebook system, webpage edition ═══════════════════════════════
+     black #000 / #0A0A0A · gold #CE9551 · ivory #F7F4EC · espresso #2A241C
+     Conservative CSS on purpose: most visitors arrive inside Telegram's
+     in-app browser. No grid, no custom properties, flexbox only.       */
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: #0A0A0A; color: #F7F4EC;
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+
+  .mono { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 22px; }
+
+  a { color: #CE9551; }
+  a:focus-visible, button:focus-visible, .cta:focus-visible {
+    outline: 3px solid #CE9551; outline-offset: 3px; }
+
+  /* ── Section frames: the PDF's gold rule + mono band ── */
+  .band { display: flex; justify-content: space-between; align-items: baseline;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.32em; text-transform: uppercase; }
+  .frame-top { border-top: 2px solid #CE9551; padding-top: 12px;
+    margin-bottom: 44px; }
+  .frame-bottom { border-bottom: 2px solid #CE9551; padding-bottom: 12px;
+    margin-top: 44px; }
+
+  .kicker { font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.42em; text-transform: uppercase; color: #CE9551;
+    font-weight: 700; margin-bottom: 14px; }
+  h2 { font-family: 'Archivo Black', 'Arial Black', sans-serif;
+    font-size: 34px; line-height: 1.05; text-transform: uppercase;
+    letter-spacing: 0.01em; font-weight: 400; margin-bottom: 18px; }
+
+  /* ── HERO: the cover formula ── */
+  .hero { background: #000; padding: 26px 0 0; }
+  .hero .band { color: #CE9551; }
+  .hero .band .r { text-align: right; color: #CE9551; line-height: 1.8; }
+  .crest { text-align: center; margin: 54px 0 40px; }
+  .crest img { width: 148px; height: 148px; object-fit: contain; }
+  h1 { font-family: 'Archivo Black', 'Arial Black', sans-serif;
+    font-size: 62px; line-height: 0.98; text-transform: uppercase;
+    letter-spacing: -0.005em; font-weight: 400; }
+  h1 .l2 { color: #CE9551; display: block; }
+  .hero .subrule { border-top: 1.5px solid #CE9551; margin-top: 26px;
+    padding-top: 16px; }
+  .hero .subtitle { font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    letter-spacing: 0.34em; text-transform: uppercase; color: #D8D3C6; }
+  .hero-cta { margin: 40px 0 8px; }
+  .cta { display: inline-block; background: #CE9551; color: #000;
+    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 18px;
+    padding: 17px 34px; border-radius: 999px; text-decoration: none; }
+  .cta:hover { background: #DCA968; }
+  .cta-note { margin-top: 14px; font-size: 14px; color: #8A857B; }
+  .hero .frame-bottom { margin-top: 56px; }
+  .hero .band.foot { color: #CE9551; }
+
+  /* ── Cream sections (the PDF interior pages) ── */
+  .cream { background: #F7F4EC; color: #2A241C; padding: 60px 0 64px; }
+  .cream .band { color: #B07C3A; }
+  .cream .band .r { color: #8A8479; }
+  .cream h2 { color: #17120C; }
+  .cream .gold { color: #B07C3A; }
+  .lede { color: #57503F; max-width: 640px; }
+
+  /* ── Steps (a real sequence, so numbers mean something) ── */
+  .steps { margin-top: 34px; }
+  .step { display: flex; align-items: flex-start; padding: 22px 0;
+    border-bottom: 1px solid #E4DCCB; }
+  .step:last-child { border-bottom: none; }
+  .step-num { font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    color: #B07C3A; font-size: 15px; letter-spacing: 0.1em; width: 56px;
+    flex-shrink: 0; padding-top: 3px; }
+  .step-body b { display: block; font-size: 19px; color: #17120C;
+    margin-bottom: 5px; }
+  .step-body p { color: #57503F; font-size: 16px; }
+
+  /* ── The wave (black band, signature element) ── */
+  .waveband { background: #000; padding: 62px 0 66px; text-align: center; }
+  .waveband h2 { color: #F7F4EC; }
+  .waveband .gold { color: #CE9551; }
+  .chips { margin: 34px 0 26px; }
+  .chip { display: inline-block; width: 108px; margin: 6px 7px;
+    padding: 16px 0 13px; border: 1px solid #2A2A28; background: #101010; }
+  .chip-v { display: block; font-family: 'Archivo Black', sans-serif;
+    font-size: 24px; color: #CE9551; }
+  .chip-k { display: block; margin-top: 7px; font-family: 'JetBrains Mono',
+    monospace; font-size: 10px; letter-spacing: 0.28em; color: #8A857B; }
+  .waveband p { color: #B5B0A4; max-width: 620px; margin: 0 auto; }
+
+  /* ── What's inside: shots + list ── */
+  .inside-flex { display: flex; flex-wrap: wrap; margin-top: 30px; }
+  .shots { flex: 1 1 340px; min-width: 300px; padding-right: 30px; }
+  .shot { display: inline-block; width: 47%; margin-right: 3%;
+    vertical-align: top; }
+  .shot img { width: 100%; height: auto; display: block;
+    border: 1px solid #E4DCCB; box-shadow: 0 14px 34px rgba(23,18,12,0.14); }
+  .shot figcaption { font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.24em; text-transform: uppercase; color: #8A8479;
+    margin-top: 10px; }
+  .inside-list { flex: 1 1 300px; min-width: 280px; }
+  .inside-list li { list-style: none; padding: 11px 0 11px 30px;
+    border-bottom: 1px solid #E4DCCB; color: #57503F; position: relative;
+    font-size: 16px; }
+  .inside-list li:before { content: "◆"; position: absolute; left: 4px;
+    color: #B07C3A; font-size: 11px; top: 15px; }
+  .inside-list li:last-child { border-bottom: none; }
+  .inside-list b { color: #17120C; }
+
+  /* ── Price ── */
+  .priceband { background: #000; padding: 64px 0 70px; text-align: center; }
+  .price { font-family: 'Archivo Black', sans-serif; font-size: 58px;
+    color: #F7F4EC; }
+  .price .cur { color: #CE9551; }
+  .price-sub { font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    letter-spacing: 0.3em; text-transform: uppercase; color: #8A857B;
+    margin: 12px 0 34px; }
+
+  /* ── FAQ ── */
+  details { border-bottom: 1px solid #E4DCCB; }
+  summary { cursor: pointer; padding: 18px 34px 18px 2px; font-weight: 600;
+    font-size: 17px; color: #17120C; list-style: none; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary:after { content: "+"; position: absolute; right: 6px; top: 14px;
+    color: #B07C3A; font-family: 'JetBrains Mono', monospace; font-size: 20px; }
+  details[open] summary:after { content: "–"; }
+  details p { padding: 0 2px 20px; color: #57503F; font-size: 16px; }
+
+  /* ── Footer ── */
+  footer { background: #000; padding: 46px 0 34px; }
+  .foot-links { text-align: center; font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; }
+  .foot-links a { color: #CE9551; text-decoration: none; margin: 0 14px;
+    display: inline-block; padding: 6px 0; }
+  .foot-links a:hover { text-decoration: underline; }
+  .disclaimer { text-align: center; color: #6E6A61; font-size: 13px;
+    max-width: 640px; margin: 26px auto 0; }
+  .foot-brand { text-align: center; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.42em; color: #8A857B; margin-top: 30px;
+    text-transform: uppercase; }
+
+  /* ── Reveal on scroll (reduced-motion safe) ── */
+  .rv { opacity: 0; -webkit-transform: translateY(18px);
+    transform: translateY(18px);
+    transition: opacity .6s ease, -webkit-transform .6s ease;
+    transition: opacity .6s ease, transform .6s ease; }
+  .rv.in { opacity: 1; -webkit-transform: none; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .rv { opacity: 1; -webkit-transform: none; transform: none;
+      transition: none; }
+  }
+
+  @media (max-width: 560px) {
+    h1 { font-size: 42px; }
+    h2 { font-size: 27px; }
+    .price { font-size: 44px; }
+    .crest img { width: 116px; height: 116px; }
+    .chip { width: 88px; margin: 5px 4px; }
+    .chip-v { font-size: 19px; }
+    .shot { width: 100%; margin-right: 0; margin-bottom: 20px; }
+    .shots { padding-right: 0; margin-bottom: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO — the cover formula ══ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="frame-top" style="margin-bottom:0;">
+      <div class="band">
+        <span>JWS&nbsp;&nbsp;Fitness</span>
+        <span class="r">Custom&nbsp;Program<br>$7.99&nbsp;AUD</span>
+      </div>
+    </div>
+
+    <div class="crest rv">
+      <img src="https://cdn.jsdelivr.net/gh/Parro95/jws-assets/logo.png"
+           alt="JWS Fitness" width="148" height="148">
+    </div>
+
+    <h1 class="rv">Your program.<span class="l2">Written for you.</span></h1>
+
+    <div class="subrule rv">
+      <div class="subtitle">15 questions&nbsp;&nbsp;·&nbsp;&nbsp;Shannon's methodology&nbsp;&nbsp;·&nbsp;&nbsp;delivered in Telegram</div>
+    </div>
+
+    <div class="hero-cta rv">
+      <a class="cta" data-bot href="#">Build my program&nbsp;→</a>
+      <div class="cta-note">Free preview of your program first — unlock the full PDF for $7.99 AUD.</div>
+    </div>
+
+    <div class="frame-bottom">
+      <div class="band foot">
+        <span>Train&nbsp;·&nbsp;Fuel&nbsp;·&nbsp;Perform</span>
+        <span class="r">For&nbsp;you</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="cream">
+  <div class="wrap">
+    <div class="frame-top">
+      <div class="band"><span>JWS Fitness&nbsp;·&nbsp;Custom Program</span><span class="r">How it works</span></div>
+    </div>
+    <div class="kicker">Two minutes of questions</div>
+    <h2>How it <span class="gold">works</span></h2>
+    <p class="lede">No forms, no email chains, no waiting days for a coach to reply. The whole thing happens inside Telegram.</p>
+
+    <div class="steps">
+      <div class="step rv">
+        <div class="step-num">01</div>
+        <div class="step-body"><b>Answer 15 quick questions</b>
+          <p>Your goal, training days, session length, the equipment you actually have, areas you want to focus on — and any injuries to program around.</p></div>
+      </div>
+      <div class="step rv">
+        <div class="step-num">02</div>
+        <div class="step-body"><b>Your program is written — for you, only</b>
+          <p>Shannon's training methodology applied to your exact answers. About a minute later your program preview appears in the chat: your split, your week, a sample day.</p></div>
+      </div>
+      <div class="step rv">
+        <div class="step-num">03</div>
+        <div class="step-body"><b>Preview free. Unlock when you're sure.</b>
+          <p>See your program before paying a cent. One tap unlocks the complete branded PDF — every session, every set, yours to keep forever.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ THE WAVE — signature ══ -->
+<section class="waveband">
+  <div class="wrap">
+    <div class="kicker">The engine inside every program</div>
+    <h2>The JWS <span class="gold">rep wave</span></h2>
+    <div class="chips rv">
+      <span class="chip"><span class="chip-v">4×15</span><span class="chip-k">WK&nbsp;1</span></span>
+      <span class="chip"><span class="chip-v">4×12</span><span class="chip-k">WK&nbsp;2</span></span>
+      <span class="chip"><span class="chip-v">4×8</span><span class="chip-k">WK&nbsp;3</span></span>
+      <span class="chip"><span class="chip-v">5×5</span><span class="chip-k">WK&nbsp;4</span></span>
+    </div>
+    <p>Reps come down as the load goes up, and week four puts the strength on the bar. Every exercise in your program carries its own four-week wave — the same system as the JWS Performance System ebooks, built into a plan that's yours alone.</p>
+  </div>
+</section>
+
+<!-- ══ WHAT'S INSIDE ══ -->
+<section class="cream">
+  <div class="wrap">
+    <div class="frame-top">
+      <div class="band"><span>JWS Fitness&nbsp;·&nbsp;Custom Program</span><span class="r">What's inside</span></div>
+    </div>
+    <div class="kicker">The PDF you keep</div>
+    <h2>What's <span class="gold">inside</span></h2>
+
+    <div class="inside-flex">
+      <div class="shots rv">
+        <figure class="shot">
+          <img src="assets/page-day.jpg" alt="A training day page from a JWS custom program, showing the exercise table with four-week rep wave chips" loading="lazy">
+          <figcaption>A training day</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/page-closing.jpg" alt="The closing page of a JWS custom program" loading="lazy">
+          <figcaption>The sign-off</figcaption>
+        </figure>
+      </div>
+      <ul class="inside-list rv">
+        <li><b>Personalised cover</b> — your name and program ID on it.</li>
+        <li><b>One page per training day</b> — exercises, sets, reps, rest, tempo, coaching cues.</li>
+        <li><b>The 4-week rep wave</b> on every single exercise.</li>
+        <li><b>Week-by-week progression</b> for the full program length.</li>
+        <li><b>Warm-up &amp; recovery guidance</b> — the other 23 hours.</li>
+        <li><b>Printable session tracker</b> — beat the logbook, not the mirror.</li>
+        <li><b>Yours forever</b> — re-send it any time with one command.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICE ══ -->
+<section class="priceband">
+  <div class="wrap">
+    <div class="kicker">One price. No subscription.</div>
+    <div class="price rv"><span class="cur">$</span>7.99&nbsp;<span style="font-size:26px;">AUD</span></div>
+    <div class="price-sub">One-time&nbsp;·&nbsp;Preview first&nbsp;·&nbsp;Secure checkout by Stripe</div>
+    <a class="cta rv" data-bot href="#">Build my program&nbsp;→</a>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="cream">
+  <div class="wrap">
+    <div class="frame-top">
+      <div class="band"><span>JWS Fitness&nbsp;·&nbsp;Custom Program</span><span class="r">Questions</span></div>
+    </div>
+    <div class="kicker">Good to know</div>
+    <h2>Questions, <span class="gold">answered</span></h2>
+
+    <details class="rv"><summary>Is it actually personalised?</summary>
+      <p>Yes — your program is built only from your answers. Your training days, your session length, your equipment, your focus areas. If you've only got dumbbells, you'll never see a barbell in it.</p></details>
+    <details class="rv"><summary>What about injuries?</summary>
+      <p>Tell the bot when it asks. Movements that clash with what you mention get swapped for safer alternatives. It's general fitness guidance, athlete-to-athlete — not medical advice — so if you're unsure whether training is right for you, check with a professional first.</p></details>
+    <details class="rv"><summary>Where does my program arrive?</summary>
+      <p>Right in your Telegram chat, as a branded PDF. It's saved to your account — type /myprogram any time and it's re-sent free.</p></details>
+    <details class="rv"><summary>What if something goes wrong?</summary>
+      <p>Message the bot — Shannon sees it and sorts it. You'll never pay for a program you didn't receive.</p></details>
+    <details class="rv"><summary>Who writes the programs?</summary>
+      <p>Shannon's training methodology — the same system behind the JWS Performance System ebooks — applied to your exact answers. It's how Shannon would train you, shared athlete-to-athlete, not a certified coaching service.</p></details>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-links">
+      <a href="https://journeywithshannon.com">Home</a>
+      <a href="https://journeywithshannon.com/collections/all">Shop swimwear</a>
+      <a href="https://t.me/vipjws">Telegram community</a>
+    </div>
+    <p class="disclaimer">This program is general fitness information, not medical advice, and no specific results are promised. Train within your limits, and check with a health professional before starting any new exercise program.</p>
+    <div class="foot-brand">JWS&nbsp;Fitness&nbsp;&nbsp;·&nbsp;&nbsp;Train&nbsp;·&nbsp;Fuel&nbsp;·&nbsp;Perform</div>
+  </div>
+</footer>
+
+<script>
+  // ── One line to rule the funnel: set your bot's exact @username here ──
+  var BOT_USERNAME = "JWS_Fitness_Bot";
+
+  (function () {
+    var url = "https://t.me/" + BOT_USERNAME + "?start=custom_program";
+    var links = document.querySelectorAll("[data-bot]");
+    for (var i = 0; i < links.length; i++) links[i].setAttribute("href", url);
+
+    // Scroll reveals — feature-detected, reduced-motion respected via CSS
+    var els = document.querySelectorAll(".rv");
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        for (var j = 0; j < entries.length; j++) {
+          if (entries[j].isIntersecting) {
+            entries[j].target.className += " in";
+            io.unobserve(entries[j].target);
+          }
+        }
+      }, { threshold: 0.12 });
+      for (var k = 0; k < els.length; k++) io.observe(els[k]);
+    } else {
+      for (var m = 0; m < els.length; m++) els[m].className += " in";
+    }
+  })();
+</script>
+</body>
+</html>
