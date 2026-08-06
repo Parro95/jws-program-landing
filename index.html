@@ -72,7 +72,8 @@
   /* ══ Conversion palette (the top-page formula) ═══════════════════════
      field #FFFFFF · tint #F4F7FB · ink #0F1B2D · muted #5B6B7F
      ACTION #2563EB · borders #E4E9F1
-     Gold #B8862E/#CE9551 reserved for THE PRODUCT (program cards, wave).
+     One palette, every section. Gold appears only inside the PDF
+     screenshots — photos of the product itself.
      Flex-only CSS: most visits arrive in Telegram's in-app browser.    */
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -117,7 +118,7 @@
     padding: 8px 14px; border-radius: 999px; white-space: nowrap; }
   .chip b { color: #7FA8FF; }
 
-  .hero-flex { display: flex; align-items: flex-end; }
+  .hero-flex { display: flex; align-items: center; }
   .hero-copy { flex: 1 1 56%; padding: 26px 36px 54px 0; }
   h1 { font-family: 'Archivo Black', 'Arial Black', sans-serif;
     font-size: 54px; line-height: 1.0; text-transform: uppercase;
@@ -129,47 +130,51 @@
     font-size: 11px; letter-spacing: 0.12em; color: #5B6B7F;
     text-transform: uppercase; }
   .proof b { color: #2563EB; }
-  .hero-me { flex: 1 1 44%; text-align: center; }
+  .hero-me { flex: 1 1 44%; text-align: center; position: relative; }
+  .hero-me:after { content: ""; position: absolute; left: 0; right: 0;
+    bottom: 0; height: 64px;
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0), #FFFFFF);
+    background: linear-gradient(to bottom, rgba(255,255,255,0), #FFFFFF); }
   .hero-me img { width: 92%; max-width: 400px; height: auto; display: block;
     margin: 0 auto; }
 
   /* ── Live program showcase (the product = gold) ── */
-  .showcase-card { background: #FFFDF7; border: 1px solid #EFE7D8;
+  .showcase-card { background: #FFFFFF; border: 1px solid #E4E9F1;
     border-radius: 14px; padding: 26px 26px 10px;
     box-shadow: 0 22px 54px rgba(15,27,45,0.10); margin-top: 30px; }
   .pgband { display: flex; justify-content: space-between; align-items: baseline;
-    border-top: 2px solid #B8862E; padding-top: 10px; margin-bottom: 18px;
+    border-top: 2px solid #2563EB; padding-top: 10px; margin-bottom: 18px;
     font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    letter-spacing: 0.28em; text-transform: uppercase; color: #B8862E; }
-  .pgband .r { color: #97907F; }
+    letter-spacing: 0.28em; text-transform: uppercase; color: #2563EB; }
+  .pgband .r { color: #5B6B7F; }
   .pgday { font-family: 'Archivo Black', sans-serif; font-size: 24px;
-    text-transform: uppercase; color: #17120C; margin-bottom: 4px; }
+    text-transform: uppercase; color: #0F1B2D; margin-bottom: 4px; }
   .pgfocus { font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
-    letter-spacing: 0.3em; text-transform: uppercase; color: #B8862E;
+    letter-spacing: 0.3em; text-transform: uppercase; color: #2563EB;
     margin-bottom: 16px; }
-  .pgwarm { background: #FBF6EF; border-left: 3px solid #CE9551;
-    padding: 10px 14px; font-size: 14.5px; color: #5C5342; margin-bottom: 8px; }
+  .pgwarm { background: #EFF4FF; border-left: 3px solid #2563EB;
+    padding: 10px 14px; font-size: 14.5px; color: #44526A; margin-bottom: 8px; }
   .exrow { display: flex; align-items: center; padding: 14px 0;
-    border-bottom: 1px solid #EFE7D8; }
+    border-bottom: 1px solid #E4E9F1; }
   .exrow:last-child { border-bottom: none; }
   .exmain { flex: 1 1 46%; padding-right: 14px; }
-  .exname { font-weight: 700; font-size: 16.5px; color: #17120C; }
-  .excue { font-size: 13px; color: #97907F; margin-top: 2px; }
+  .exname { font-weight: 700; font-size: 16.5px; color: #0F1B2D; }
+  .excue { font-size: 13px; color: #8A97A8; margin-top: 2px; }
   .exwave { flex: 0 0 auto; white-space: nowrap; }
   .pchip { display: inline-block; width: 52px; text-align: center;
     margin-left: 4px; }
   .pchip-v { display: block; font-weight: 700; font-size: 13.5px;
-    color: #B8862E; }
+    color: #2563EB; }
   .pchip-k { display: block; font-family: 'JetBrains Mono', monospace;
-    font-size: 8px; letter-spacing: 0.14em; color: #C0B8A6; margin-top: 1px; }
+    font-size: 8px; letter-spacing: 0.14em; color: #9AA8BA; margin-top: 1px; }
   .exmeta { flex: 0 0 84px; text-align: right; font-family: 'JetBrains Mono',
-    monospace; font-size: 10.5px; color: #97907F; line-height: 1.7; }
+    monospace; font-size: 10.5px; color: #8A97A8; line-height: 1.7; }
   .showcase-cap { text-align: center; margin-top: 18px; font-size: 14px;
     color: #5B6B7F; }
 
   /* ── Training videos ── */
-  .vidrow { display: flex; margin-top: 28px; }
-  .vid { flex: 1 1 0; margin-right: 20px; }
+  .vidrow { display: flex; justify-content: center; margin-top: 28px; }
+  .vid { flex: 0 1 400px; margin-right: 20px; }
   .vid:last-child { margin-right: 0; }
   .vid video { width: 100%; height: auto; display: block; border-radius: 14px;
     border: 1px solid #E4E9F1; background: #0F1B2D;
@@ -190,18 +195,18 @@
   .card p { color: #5B6B7F; font-size: 15.5px; }
 
   /* ── Wave: the product's black-gold moment ── */
-  .waveband { background: #0A0A0A; text-align: center; padding: 60px 0 64px; }
-  .waveband h2 { color: #F7F4EC; }
-  .waveband .gold { color: #CE9551; }
+  .waveband { background: #0F1B2D; text-align: center; padding: 60px 0 64px; }
+  .waveband h2 { color: #FFFFFF; }
+  .waveband .gold { color: #7FA8FF; }
   .chips { margin: 30px 0 24px; }
   .wchip { display: inline-block; width: 106px; margin: 6px 7px;
-    padding: 16px 0 13px; border: 1px solid #2A2A28; background: #101010;
+    padding: 16px 0 13px; border: 1px solid #24344E; background: #16233A;
     border-radius: 10px; }
   .wchip-v { display: block; font-family: 'Archivo Black', sans-serif;
-    font-size: 23px; color: #CE9551; }
+    font-size: 23px; color: #FFFFFF; }
   .wchip-k { display: block; margin-top: 7px; font-family: 'JetBrains Mono',
-    monospace; font-size: 10px; letter-spacing: 0.28em; color: #8A857B; }
-  .waveband p { color: #B5B0A4; max-width: 620px; margin: 0 auto; }
+    monospace; font-size: 10px; letter-spacing: 0.28em; color: #7FA8FF; }
+  .waveband p { color: #B8C6DA; max-width: 620px; margin: 0 auto; }
   .waveband .cta { margin-top: 30px; }
 
   /* ── What's inside ── */
@@ -319,6 +324,17 @@
     .rv { opacity: 1; -webkit-transform: none; transform: none; transition: none; }
   }
 
+  @media (max-width: 900px) {
+    h1 { font-size: 46px; }
+    .hero-copy { padding-right: 24px; }
+    .exrow { display: block; padding: 14px 0 12px; }
+    .exmain { padding-right: 0; }
+    .exwave { margin-top: 8px; white-space: normal; }
+    .pchip { margin: 0 8px 0 0; }
+    .exmeta { text-align: left; margin-top: 6px; }
+    .showcase-card { padding: 20px 16px 6px; }
+  }
+
   @media (max-width: 700px) {
     h1 { font-size: 38px; }
     h2 { font-size: 26px; }
@@ -337,12 +353,6 @@
     .shotrow { display: block; }
     .shot { margin: 0 0 20px; }
     .shots { padding-right: 0; margin-bottom: 26px; }
-    .exrow { display: block; padding: 14px 0 12px; }
-    .exmain { padding-right: 0; }
-    .exwave { margin-top: 8px; white-space: normal; }
-    .pchip { margin: 0 8px 0 0; }
-    .exmeta { text-align: left; margin-top: 6px; }
-    .showcase-card { padding: 20px 16px 6px; }
     .about-flex { display: block; text-align: center; }
     .about-flex img { margin: 0 auto 16px; }
   }
@@ -493,7 +503,7 @@
 <!-- ══ THE WAVE ══ -->
 <section class="waveband">
   <div class="wrap">
-    <div class="kicker" style="color:#CE9551;">The engine inside every program</div>
+    <div class="kicker" style="color:#7FA8FF;">The engine inside every program</div>
     <h2>The JWS <span class="gold">rep wave</span></h2>
     <div class="chips rv">
       <span class="wchip"><span class="wchip-v">4×15</span><span class="wchip-k">WK&nbsp;1</span></span>
@@ -617,6 +627,17 @@
 
 <script>
   var BOT_USERNAME = "JWS_Fitness_Bot";
+  var GA4_ID = "";  // paste your GA4 Measurement ID (G-XXXXXXXXXX) to enable analytics
+  if (GA4_ID) {
+    var gs = document.createElement("script");
+    gs.async = true;
+    gs.src = "https://www.googletagmanager.com/gtag/js?id=" + GA4_ID;
+    document.head.appendChild(gs);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ window.dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", GA4_ID);
+  }
   (function () {
     var url = "https://t.me/" + BOT_USERNAME + "?start=custom_program";
     var links = document.querySelectorAll("[data-bot]");
