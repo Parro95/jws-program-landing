@@ -49,7 +49,8 @@ one line.
 
 ## Client transformations (auto-discovered)
 Drop images into assets/transformations/ named 1.jpg, 2.jpg, 3.jpg ...
-(.png also works). One image per client — before & after combined
+(.png also works — but keep numbering gapless: the page stops at the
+first missing number). One image per client — before & after combined
 side-by-side. The page finds them automatically and shows a horizontal
 swipe carousel; with zero images the section stays invisible. Only post
 real clients who've given written permission.

@@ -711,27 +711,34 @@
       var sec = document.getElementById("tSection");
       if (!row || !sec) return;
       var found = 0;
-      function tryLoad(n, ext) {
-        var img = new Image();
-        img.onload = function () {
-          var card = document.createElement("div");
-          card.className = "tcard";
-          img.alt = "Client transformation " + n + " — before and after";
-          card.appendChild(img);
-          var cap = document.createElement("div");
-          cap.className = "tcap";
-          cap.innerHTML = "TRANSFORMATION&nbsp;" + (n < 10 ? "0" + n : n);
-          card.appendChild(cap);
-          row.appendChild(card);
-          found++;
-          sec.style.display = "block";
-        };
-        img.onerror = function () {
-          if (ext === "jpg") tryLoad(n, "png");
-        };
-        img.src = "assets/transformations/" + n + "." + ext;
+      function addCard(img, n) {
+        var card = document.createElement("div");
+        card.className = "tcard";
+        img.alt = "Client transformation " + n + " — before and after";
+        card.appendChild(img);
+        var cap = document.createElement("div");
+        cap.className = "tcap";
+        cap.innerHTML = "TRANSFORMATION&nbsp;" + (n < 10 ? "0" + n : n);
+        card.appendChild(cap);
+        row.appendChild(card);
+        found++;
+        sec.style.display = "block";
       }
-      for (var n = 1; n <= 24; n++) tryLoad(n, "jpg");
+      // Sequential discovery: only look for photo N+1 once photo N exists.
+      // Empty folder costs 2 requests total (was 48). Numbering must be
+      // gapless — 1, 2, 3... — see assets/transformations/README.txt.
+      function tryIndex(n) {
+        if (n > 24) return;
+        var jpg = new Image();
+        jpg.onload = function () { addCard(jpg, n); tryIndex(n + 1); };
+        jpg.onerror = function () {
+          var png = new Image();
+          png.onload = function () { addCard(png, n); tryIndex(n + 1); };
+          png.src = "assets/transformations/" + n + ".png";
+        };
+        jpg.src = "assets/transformations/" + n + ".jpg";
+      }
+      tryIndex(1);
 
       // Gentle auto-drift, paused on any user touch/hover; motion-safe.
       var reduce = window.matchMedia &&
