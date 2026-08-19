@@ -5,7 +5,13 @@ design language (black cover hero, cream framed sections, wave chips, goat
 crest via your CDN). Conservative CSS on purpose — it renders perfectly in
 Telegram's in-app browser, where most of your traffic will open it.
 
-## Files
+## Files (v8 — Journey family structure)
+- css/landing.css       shared stylesheet — SAME tokens as app.journeywithshannon.com
+- js/theme.js           light/dark engine (identical file to the Journey site)
+- llms.txt, .well-known/security.txt   same operational files as the app site
+- assets/journey-home.webp   the app screenshot used in the Journey section
+
+## Files (original)
 - index.html          the whole site (styles + script inside)
 - assets/page-day.jpg      product shot — a training day with wave chips
 - assets/page-closing.jpg  product shot — the Great Work page

@@ -1,0 +1,14 @@
+# JWS Custom Fitness Program
+
+> A personalised 4–8 week workout program built from your answers by JWS Fitness (Journey With Shannon). Answer 15 questions in a Telegram bot, preview your program free, then unlock the full branded PDF for AU$7.99 one-time.
+
+Programs are built around each person's goal, training days, session length, available equipment (full gym, home dumbbells, or bodyweight) and injuries, on Shannon's methodology — the JWS 4-week rep wave (reps fall as load rises; week four is a strength expression). Delivered in Telegram as a PDF with per-day exercise tables, week-by-week progression, warm-up and recovery guidance, and a printable session tracker.
+
+## Key pages
+- [Home](https://jws-program-landing.journeywithshannon.com/): the program, how it works, pricing and FAQ
+- [Start in Telegram](https://t.me/JWS_Fitness_Bot?start=custom_program): the bot that builds your program
+- [Journey app](https://app.journeywithshannon.com/): the JWS daily check-in and progress-photo tracker for iPhone
+
+## Related
+- [Journey With Shannon](https://journeywithshannon.com/): main site
+- [Journey on the App Store](https://apps.apple.com/au/app/journey-body-transformation/id6795424260): AU$9.99 one-time
